@@ -16,5 +16,6 @@ namespace Forum.Application.Common.Services
         Task<int> GetCommentsCountByUserId(int userId, CancellationToken cancellationToken);
 
         Task DeleteCommentsByUserId(int userId, CancellationToken cancellationToken);
+        Task<object?> GetCommentsByTopicId(object topicId, CancellationToken cancellationToken);
     }
 }

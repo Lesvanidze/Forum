@@ -17,11 +17,11 @@ namespace Forum.Api.Controllers
             _commentService = commentService;
         }
 
-        [HttpGet]
+        [HttpGet("topic/{topicId}")]
         [ProducesResponseType(typeof(List<CommentDto>), statusCode: 200)]
         public async Task<ActionResult<IEnumerable<CommentDto?>>> GetCommentsByTopicId(int topicId, CancellationToken cancellationToken)
         {
-            return Ok(await _commentService.GetCommentsByTopicId(cancellationToken));
+            return Ok(await _commentService.GetCommentsByTopicId(topicId, cancellationToken));
         }
 
 
