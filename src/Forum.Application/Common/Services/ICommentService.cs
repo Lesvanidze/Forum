@@ -4,6 +4,7 @@ namespace Forum.Application.Common.Services
 {
     public interface ICommentService
     {
+
         Task<CommentDto?> GetCommentById(int commentId, CancellationToken cancellationToken);
 
         Task<IEnumerable<CommentDto?>> GetCommentsByTopicId(int topicId, CancellationToken cancellationToken);

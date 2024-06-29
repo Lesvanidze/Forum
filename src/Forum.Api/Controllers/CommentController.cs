@@ -1,6 +1,31 @@
-﻿namespace Forum.Api.Controllers
+﻿using Forum.Application.Common.Models;
+using Forum.Application.Common.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Forum.Api.Controllers
 {
-    public class CommentController
+
+
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CommentController : ControllerBase
     {
+        private readonly ICommentService _commentService;
+
+        public CommentController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(List<CommentDto>), statusCode: 200)]
+        public async Task<ActionResult<IEnumerable<CommentDto?>>> GetCommentsByTopicId(int topicId, CancellationToken cancellationToken)
+        {
+            return Ok(await _commentService.GetCommentsByTopicId(cancellationToken));
+        }
+
+
     }
+
+
 }
